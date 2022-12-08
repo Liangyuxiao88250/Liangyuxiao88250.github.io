@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自动加载</title>
+</head>
+<body>
+<style type="text/css">
+    .divForm{
+        position: absolute;/*绝对定位*/
+        width: 300px;
+        height: 200px;
+        border: 0px solid red;
+        text-align: center;/*(让div中的内容居中)*/
+        top: 50%;
+        left: 50%;
+        margin-top: -100px;
+        margin-left: -150px;
+    }
+</style>
+
+<div class="divForm">
+    <form name=loading class="login-from">
+        <td align="center">
+            <p><font color=gray>正在载入，请稍候.......</font></p>
+            <input type=text name=chart size=46
+                   style="font-family:Arial;
+                   font-weight:bolder;
+                   color:gray;
+                   background-color:white;
+                   padding:0px;
+                   border-style:none;">
+            <br>
+            <input type=text name=percent size=46
+                   style="font-family:Arial;
+                   color:gray;
+                   text-align:center;
+                   border-width:medium;
+                   border-style:none;">
+        </td>
+    </form>
+</div>
+<script>
+    var bar = 0;
+    var line = "||";
+    var amount = "||";
+    count();
+
+    function count() {
+        bar = bar + 2;
+        amount = amount + line;
+        document.loading.chart.value = amount;
+        document.loading.percent.value = bar + "%";
+        if (bar < 99) {
+            setTimeout("count()", 100);
+        } else {
+            window.location = "index1.html";
+        }
+    }
+</script>
+</body>
+</html>
